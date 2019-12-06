@@ -832,130 +832,231 @@
     </collation>
     <table id="208" parent="5" name="t_commodity"/>
     <table id="209" parent="5" name="t_merchant"/>
-    <table id="210" parent="5" name="t_user"/>
-    <table id="211" parent="5" name="t_user_action"/>
-    <column id="212" parent="208" name="commodity_id">
+    <table id="210" parent="5" name="t_test_pd"/>
+    <table id="211" parent="5" name="t_user"/>
+    <table id="212" parent="5" name="t_user_add_to_cart"/>
+    <table id="213" parent="5" name="t_user_add_to_favorite"/>
+    <table id="214" parent="5" name="t_user_click"/>
+    <table id="215" parent="5" name="t_user_purchase"/>
+    <column id="216" parent="208" name="commodity_id">
       <Position>1</Position>
       <Comment>商品号</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="213" parent="208" name="merchant_id">
+    <column id="217" parent="208" name="merchant_id">
       <Position>2</Position>
       <Comment>商家号</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="214" parent="208" name="price">
+    <column id="218" parent="208" name="price">
       <Position>3</Position>
       <Comment>价格</Comment>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="215" parent="208" name="commodity_class">
+    <column id="219" parent="208" name="category_id">
       <Position>4</Position>
+      <Comment>分类</Comment>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="220" parent="208" name="commodity_category">
+      <Position>5</Position>
       <Comment>商品类别</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="216" parent="208" name="commodity_brand">
-      <Position>5</Position>
+    <column id="221" parent="208" name="brand_id">
+      <Position>6</Position>
+      <Comment>品牌id</Comment>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="222" parent="208" name="commodity_brand">
+      <Position>7</Position>
       <Comment>商品品牌</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="217" parent="208" name="commodity_doc">
-      <Position>6</Position>
+    <column id="223" parent="208" name="commodity_doc">
+      <Position>8</Position>
       <Comment>商品简介</Comment>
       <DataType>varchar(200)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="218" parent="208" name="PRIMARY">
+    <column id="224" parent="208" name="dicount">
+      <Position>9</Position>
+      <Comment>折扣</Comment>
+      <DataType>double|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="225" parent="208" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>commodity_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="219" parent="209" name="merchant_id">
+    <column id="226" parent="209" name="merchant_id">
       <Position>1</Position>
       <Comment>商家号</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="220" parent="209" name="GMV">
+    <column id="227" parent="209" name="GMV">
       <Position>2</Position>
       <Comment>单月交易总额</Comment>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="221" parent="209" name="PRIMARY">
+    <key id="228" parent="209" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>merchant_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="222" parent="210" name="user_id">
+    <column id="229" parent="210" name="nmsl">
+      <Position>1</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="230" parent="210" name="wsnd">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="231" parent="210" name="zsmj">
+      <Position>3</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="232" parent="210" name="gosky">
+      <Position>4</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="233" parent="210" name="zuan">
+      <Position>5</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="234" parent="210" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>nmsl</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="235" parent="211" name="user_id">
       <Position>1</Position>
       <Comment>用户号</Comment>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="223" parent="210" name="preference">
+    <column id="236" parent="211" name="preference">
       <Position>2</Position>
       <Comment>用户偏好描述</Comment>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="224" parent="210" name="consum_level">
+    <column id="237" parent="211" name="consume_level">
       <Position>3</Position>
       <Comment>消费水平</Comment>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="225" parent="210" name="consum_frequency">
+    <column id="238" parent="211" name="consume_frequency">
       <Position>4</Position>
       <Comment>消费频率</Comment>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="226" parent="210" name="PRIMARY">
+    <column id="239" parent="211" name="area_name">
+      <Position>5</Position>
+      <Comment>用户地区</Comment>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="240" parent="211" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>user_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="227" parent="211" name="user_id">
+    <column id="241" parent="212" name="user_id">
+      <Position>1</Position>
+      <Comment>用户id</Comment>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="242" parent="212" name="commodity_id">
+      <Position>2</Position>
+      <Comment>商品id</Comment>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="243" parent="212" name="time_stamp">
+      <Position>3</Position>
+      <Comment>时间</Comment>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="244" parent="213" name="user_id">
+      <Position>1</Position>
+      <Comment>用户id</Comment>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="245" parent="213" name="commodity_id">
+      <Position>2</Position>
+      <Comment>商品id</Comment>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="246" parent="213" name="time_stamp">
+      <Position>3</Position>
+      <Comment>时间</Comment>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="247" parent="214" name="user_id">
       <Position>1</Position>
       <Comment>用户号</Comment>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="228" parent="211" name="commodity_id">
+    <column id="248" parent="214" name="commodity_id">
       <Position>2</Position>
       <Comment>商品号</Comment>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="229" parent="211" name="time_stamp">
+    <column id="249" parent="214" name="time_stamp">
       <Position>3</Position>
       <Comment>购买时间</Comment>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="230" parent="211" name="count">
-      <Position>4</Position>
-      <Comment>消费频率</Comment>
+    <column id="250" parent="215" name="user_id">
+      <Position>1</Position>
+      <Comment>用户id</Comment>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="231" parent="211" name="action_type">
-      <Position>5</Position>
-      <Comment>动作类型</Comment>
-      <DataType>varchar(12)|0s</DataType>
+    <column id="251" parent="215" name="commodity_id">
+      <Position>2</Position>
+      <Comment>商品id</Comment>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="252" parent="215" name="time_stamp">
+      <Position>3</Position>
+      <Comment>时间</Comment>
+      <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
   </database-model>

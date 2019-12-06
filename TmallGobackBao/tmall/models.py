@@ -12,13 +12,25 @@ class TCommodity(models.Model):
     commodity_id = models.CharField(primary_key=True, max_length=20)
     merchant_id = models.CharField(max_length=20)
     price = models.FloatField()
-    commodity_class = models.CharField(max_length=20)
+    category_id = models.CharField(max_length=20, blank=True, null=True)
+    commodity_category = models.CharField(max_length=20)
+    brand_id = models.CharField(max_length=20, blank=True, null=True)
     commodity_brand = models.CharField(max_length=20)
     commodity_doc = models.CharField(max_length=200, blank=True, null=True)
+    discount = models.FloatField(blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 't_commodity'
+
+
+class TLoginUser(models.Model):
+    user_id = models.CharField(primary_key=True, max_length=20)
+    password = models.CharField(max_length=20, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 't_login_user'
 
 
 class TMerchant(models.Model):
@@ -35,19 +47,48 @@ class TUser(models.Model):
     preference = models.CharField(max_length=50, blank=True, null=True)
     consume_level = models.CharField(max_length=20, blank=True, null=True)
     consume_frequency = models.CharField(max_length=20, blank=True, null=True)
+    area_name = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 't_user'
 
 
-class TUserAction(models.Model):
+class TUserAddToCart(models.Model):
     user_id = models.CharField(max_length=20, blank=True, null=True)
     commodity_id = models.CharField(max_length=20, blank=True, null=True)
     time_stamp = models.CharField(max_length=20, blank=True, null=True)
-    count = models.CharField(max_length=20, blank=True, null=True)
-    action_type = models.CharField(max_length=12, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 't_user_action'
+        db_table = 't_user_add_to_cart'
+
+
+class TUserAddToFavorite(models.Model):
+    user_id = models.CharField(max_length=20, blank=True, null=True)
+    commodity_id = models.CharField(max_length=20, blank=True, null=True)
+    time_stamp = models.CharField(max_length=20, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 't_user_add_to_favorite'
+
+
+class TUserClick(models.Model):
+    user_id = models.CharField(max_length=20, blank=True, null=True)
+    commodity_id = models.CharField(max_length=20, blank=True, null=True)
+    time_stamp = models.CharField(max_length=20, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 't_user_click'
+
+
+class TUserPurchase(models.Model):
+    user_id = models.CharField(max_length=20, blank=True, null=True)
+    commodity_id = models.CharField(max_length=20, blank=True, null=True)
+    time_stamp = models.CharField(max_length=20, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 't_user_purchase'
