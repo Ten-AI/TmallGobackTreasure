@@ -20,5 +20,8 @@ from tmall import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.login),
+    path('', views.index),
+    path('login/', views.login),
+    path('base/', views.IndexView.as_view(), name='test'),
+    path('test/', views.ChartView.as_view(), name='test'),
 ]
