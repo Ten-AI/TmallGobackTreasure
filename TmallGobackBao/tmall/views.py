@@ -29,7 +29,7 @@ def login(request):
         try:
             user = models.TLoginUser.objects.get(user_id=username)
             if user.password == password:
-                request.session['user_id'] = user
+                request.session['user_id'] = user.user_id
                 request.session['is_login'] = True
                 message = "yes"
             else:
@@ -92,7 +92,7 @@ JsonError = json_error
 
 
 def action_type_bar() -> Bar:
-    models.TMerchant.objects.
+    # models.TMerchant.objects.
 
     c = (
         Bar()

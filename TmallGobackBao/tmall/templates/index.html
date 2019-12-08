@@ -255,9 +255,8 @@
             'Content-Type':'application/json',
             headers:{'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
             success:function (res) {
-                alert("?")
+                {#console.log(res)#}
                 if(res.data.message === 'yes'){
-                    alert('yes')
                     window.location.href = '/base/'
                 }
             }
