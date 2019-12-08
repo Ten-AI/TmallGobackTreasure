@@ -4,7 +4,47 @@
 <head>
     <meta charset="utf-8"/>
     <title>www.TmallGoback.com</title>
-    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+{#    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>#}
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript">
+
+        $(document).ajaxSend(function(event, xhr, settings) {
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            function sameOrigin(url) {
+                // url could be relative or scheme relative or absolute
+                var host = document.location.host; // host + port
+                var protocol = document.location.protocol;
+                var sr_origin = '//' + host;
+                var origin = protocol + sr_origin;
+                // Allow absolute or scheme relative URLs to same origin
+                return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+                    (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+                    // or any other URL that isn't scheme relative or absolute i.e relative.
+                    !(/^(\/\/|http:|https:).*/.test(url));
+            }
+            function safeMethod(method) {
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+
+            if (!safeMethod(settings.type) && sameOrigin(settings.url)) {
+                xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+            }
+        });
+    </script>
     <style>
         body{
             background: #ebebeb;
@@ -198,7 +238,7 @@
 </div>
 
 <div style="position: fixed;bottom: 0px;text-align: center;width: 100%; margin-bottom: 3%;">
-    Copyright ©2019 <a style="margin-left: 10px;color: #000000;text-decoration: none" href="#" >https://www.baidu.com/</a>
+    Copyright ©2020 <a style="margin-left: 10px;color: #000000;text-decoration: none" href="#" >https://www.hewenyong.com/</a>
 </div>
 <script type="text/javascript">
     $("#submit").click(function () {
@@ -215,9 +255,8 @@
             'Content-Type':'application/json',
             headers:{'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
             success:function (res) {
-                alert("?")
+                {#console.log(res)#}
                 if(res.data.message === 'yes'){
-                    alert('yes')
                     window.location.href = '/base/'
                 }
             }
