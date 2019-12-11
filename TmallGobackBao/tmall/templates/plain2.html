@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>天猫回头盈利宝</title>
+    <link rel="stylesheet" href="../static/layui/css/layui.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/echarts.js"></script>
+    <style type="text/css">
+        .radio{
+            padding-top: 50px;
+            float: right;
+            display: block;
+        }
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">天猫回头盈利宝</div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    贤心
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="/index/">退了</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">运营数据展示</a>
+                    <dl class="layui-nav-child">
+                        <dd><a onclick="fetchCharts('price_month')">平台整体交易额增长情况</a></dd>
+                        <dd><a onclick="fetchCharts('brand')">用户购买品牌分布情况</a></dd>
+                        <dd><a onclick="fetchCharts('category')">用户购买商品分类情况</a></dd>
+                        <dd><a onclick="fetchCharts('laoguke')">商家历史gmv分布图</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a onclick="fetchCharts('roi')">ROI曲线</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div id="content1">
+            <div style="padding-top: 30px;padding-left: 70%;">
+                <label><input name="chart_type" type="radio" value="bar" />图表类型一</label>
+                <label><input name="chart_type" type="radio" value="line" />图表类型二</label>
+            </div>
+            <div style="width: 100%;">
+                <div id="bar" class="charts_show" style="width: 1000px;padding-left:200px;height:600px;padding-top: 50px;padding-bottom: 0px;"></div>
+                <div id="line" class="charts_show" style="width: 1000px;padding-left:200px;height:600px;padding-top: 50px;padding-bottom: 0px;display: none"></div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © 2020 All Reverse
+    </div>
+</div>
+<script src="../static/layui/layui.js"></script>
+<script type="text/javascript">
+    layui.use('form', function(){
+        let form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+        //但是，如果你的HTML是动态生成的，自动渲染就会失效
+        //因此你需要在相应的地方，执行下述方法来进行渲染
+        form.render();
+    });
+    $("input[name=chart_type]").click(function(){
+        let x = $(this).val();
+        $('.charts_show').hide()
+        $("#" + x).show()
+    });
+
+    function selectChange(){
+        let x = $("#type").val()
+        $('.charts_show').hide()
+        console.log(x)
+        console.log(typeof x)
+        $("#" + x).show()
+    }
+
+    $("#submit").click(function () {
+        let min = $("#min").val()
+        let max = $("#max").val()
+        alert(min+max)
+    })
+
+    let barChart = echarts.init(document.getElementById('bar'),'write', {renderer: 'canvas'})
+    let lineChart = echarts.init(document.getElementById('line'),'write', {renderer: 'canvas'})
+
+    function fetchData(chart_type) {
+        if(chart_type === 'roi'){
+            $("#content1").hide()
+            $("#content2").show()
+        }else{
+            $("#content2").hide()
+            $("#content1").show()
+        }
+        $.ajax({
+            url: '/charts_yunying/'+chart_type,
+            dataType: 'json',
+            'Content-Type':'application/json',
+            headers:{'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
+            success:function (res) {
+
+                barChart.clear()
+                lineChart.clear()
+                barChart.setOption(res.data[0])
+                lineChart.setOption(res.data[1])
+
+            }
+        })
+    }
+
+
+
+
+    function fetchCharts(chart_type) {
+        fetchData(chart_type);
+    }
+
+
+
+
+</script>
+<script>
+    //JavaScript代码区域
+
+
+    layui.use('tree', function(){
+        var element = layui.element;
+    });
+</script>
+</body>
+</html>
+
+
+
+
+

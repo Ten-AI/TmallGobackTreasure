@@ -1,31 +1,330 @@
 {% extends "base.html" %}
 
+
+
+
+
 {% block content %}
-    <div style="margin-top: 50px;width: 800px">
-        <div id="bar" style="width: 800px;height:600px;padding-top: 100px;padding-bottom: 0px"></div>
+    <div id="content1">
+        <div style="padding-top: 30px;padding-left: 70%;">
+            <label><input name="chart_type" type="radio" value="bar" />图表类型一</label>
+            <label><input name="chart_type" type="radio" value="line" />图表类型二</label>
+        </div>
+
+
     </div>
+
+    <div id="content2">
+        <form class="layui-form" action="javascript:void(0)">
+            <div class="layui-form-item" style="float: right;padding-top: 50px;padding-right: 100px">
+                <div class="layui-inline">
+                    <label class="layui-form-label">范围</label>
+                    <div class="layui-input-inline">
+                        <select name="modules" id="min" lay-verify="required" lay-search="">
+                            <option value="">最小值</option>
+                            <option value='0'>0.00</option>
+                            <option value='1'>0.01</option>
+                            <option value='2'>0.02</option>
+                            <option value='3'>0.03</option>
+                            <option value='4'>0.04</option>
+                            <option value='5'>0.05</option>
+                            <option value='6'>0.06</option>
+                            <option value='7'>0.07</option>
+                            <option value='8'>0.08</option>
+                            <option value='9'>0.09</option>
+                            <option value='10'>0.10</option>
+                            <option value='11'>0.11</option>
+                            <option value='12'>0.12</option>
+                            <option value='13'>0.13</option>
+                            <option value='14'>0.14</option>
+                            <option value='15'>0.15</option>
+                            <option value='16'>0.16</option>
+                            <option value='17'>0.17</option>
+                            <option value='18'>0.18</option>
+                            <option value='19'>0.19</option>
+                            <option value='20'>0.20</option>
+                            <option value='21'>0.21</option>
+                            <option value='22'>0.22</option>
+                            <option value='23'>0.23</option>
+                            <option value='24'>0.24</option>
+                            <option value='25'>0.25</option>
+                            <option value='26'>0.26</option>
+                            <option value='27'>0.27</option>
+                            <option value='28'>0.28</option>
+                            <option value='29'>0.29</option>
+                            <option value='30'>0.30</option>
+                            <option value='31'>0.31</option>
+                            <option value='32'>0.32</option>
+                            <option value='33'>0.33</option>
+                            <option value='34'>0.34</option>
+                            <option value='35'>0.35</option>
+                            <option value='36'>0.36</option>
+                            <option value='37'>0.37</option>
+                            <option value='38'>0.38</option>
+                            <option value='39'>0.39</option>
+                            <option value='40'>0.40</option>
+                            <option value='41'>0.41</option>
+                            <option value='42'>0.42</option>
+                            <option value='43'>0.43</option>
+                            <option value='44'>0.44</option>
+                            <option value='45'>0.45</option>
+                            <option value='46'>0.46</option>
+                            <option value='47'>0.47</option>
+                            <option value='48'>0.48</option>
+                            <option value='49'>0.49</option>
+                            <option value='50'>0.50</option>
+                            <option value='51'>0.51</option>
+                            <option value='52'>0.52</option>
+                            <option value='53'>0.53</option>
+                            <option value='54'>0.54</option>
+                            <option value='55'>0.55</option>
+                            <option value='56'>0.56</option>
+                            <option value='57'>0.57</option>
+                            <option value='58'>0.58</option>
+                            <option value='59'>0.59</option>
+                            <option value='60'>0.60</option>
+                            <option value='61'>0.61</option>
+                            <option value='62'>0.62</option>
+                            <option value='63'>0.63</option>
+                            <option value='64'>0.64</option>
+                            <option value='65'>0.65</option>
+                            <option value='66'>0.66</option>
+                            <option value='67'>0.67</option>
+                            <option value='68'>0.68</option>
+                            <option value='69'>0.69</option>
+                            <option value='70'>0.70</option>
+                            <option value='71'>0.71</option>
+                            <option value='72'>0.72</option>
+                            <option value='73'>0.73</option>
+                            <option value='74'>0.74</option>
+                            <option value='75'>0.75</option>
+                            <option value='76'>0.76</option>
+                            <option value='77'>0.77</option>
+                            <option value='78'>0.78</option>
+                            <option value='79'>0.79</option>
+                            <option value='80'>0.80</option>
+                            <option value='81'>0.81</option>
+                            <option value='82'>0.82</option>
+                            <option value='83'>0.83</option>
+                            <option value='84'>0.84</option>
+                            <option value='85'>0.85</option>
+                            <option value='86'>0.86</option>
+                            <option value='87'>0.87</option>
+                            <option value='88'>0.88</option>
+                            <option value='89'>0.89</option>
+                            <option value='90'>0.90</option>
+                            <option value='91'>0.91</option>
+                            <option value='92'>0.92</option>
+                            <option value='93'>0.93</option>
+                            <option value='94'>0.94</option>
+                            <option value='95'>0.95</option>
+                            <option value='96'>0.96</option>
+                            <option value='97'>0.97</option>
+                            <option value='98'>0.98</option>
+                            <option value='99'>0.99</option>
+                        </select>
+
+                    </div>
+                    <div class="layui-form-mid">-</div>
+                    <div class="layui-input-inline">
+                        <select name="modules" id="max" lay-verify="required" lay-search="">
+                            <option value="">最大值</option>
+                            <option value='0'>0.00</option>
+                            <option value='1'>0.01</option>
+                            <option value='2'>0.02</option>
+                            <option value='3'>0.03</option>
+                            <option value='4'>0.04</option>
+                            <option value='5'>0.05</option>
+                            <option value='6'>0.06</option>
+                            <option value='7'>0.07</option>
+                            <option value='8'>0.08</option>
+                            <option value='9'>0.09</option>
+                            <option value='10'>0.10</option>
+                            <option value='11'>0.11</option>
+                            <option value='12'>0.12</option>
+                            <option value='13'>0.13</option>
+                            <option value='14'>0.14</option>
+                            <option value='15'>0.15</option>
+                            <option value='16'>0.16</option>
+                            <option value='17'>0.17</option>
+                            <option value='18'>0.18</option>
+                            <option value='19'>0.19</option>
+                            <option value='20'>0.20</option>
+                            <option value='21'>0.21</option>
+                            <option value='22'>0.22</option>
+                            <option value='23'>0.23</option>
+                            <option value='24'>0.24</option>
+                            <option value='25'>0.25</option>
+                            <option value='26'>0.26</option>
+                            <option value='27'>0.27</option>
+                            <option value='28'>0.28</option>
+                            <option value='29'>0.29</option>
+                            <option value='30'>0.30</option>
+                            <option value='31'>0.31</option>
+                            <option value='32'>0.32</option>
+                            <option value='33'>0.33</option>
+                            <option value='34'>0.34</option>
+                            <option value='35'>0.35</option>
+                            <option value='36'>0.36</option>
+                            <option value='37'>0.37</option>
+                            <option value='38'>0.38</option>
+                            <option value='39'>0.39</option>
+                            <option value='40'>0.40</option>
+                            <option value='41'>0.41</option>
+                            <option value='42'>0.42</option>
+                            <option value='43'>0.43</option>
+                            <option value='44'>0.44</option>
+                            <option value='45'>0.45</option>
+                            <option value='46'>0.46</option>
+                            <option value='47'>0.47</option>
+                            <option value='48'>0.48</option>
+                            <option value='49'>0.49</option>
+                            <option value='50'>0.50</option>
+                            <option value='51'>0.51</option>
+                            <option value='52'>0.52</option>
+                            <option value='53'>0.53</option>
+                            <option value='54'>0.54</option>
+                            <option value='55'>0.55</option>
+                            <option value='56'>0.56</option>
+                            <option value='57'>0.57</option>
+                            <option value='58'>0.58</option>
+                            <option value='59'>0.59</option>
+                            <option value='60'>0.60</option>
+                            <option value='61'>0.61</option>
+                            <option value='62'>0.62</option>
+                            <option value='63'>0.63</option>
+                            <option value='64'>0.64</option>
+                            <option value='65'>0.65</option>
+                            <option value='66'>0.66</option>
+                            <option value='67'>0.67</option>
+                            <option value='68'>0.68</option>
+                            <option value='69'>0.69</option>
+                            <option value='70'>0.70</option>
+                            <option value='71'>0.71</option>
+                            <option value='72'>0.72</option>
+                            <option value='73'>0.73</option>
+                            <option value='74'>0.74</option>
+                            <option value='75'>0.75</option>
+                            <option value='76'>0.76</option>
+                            <option value='77'>0.77</option>
+                            <option value='78'>0.78</option>
+                            <option value='79'>0.79</option>
+                            <option value='80'>0.80</option>
+                            <option value='81'>0.81</option>
+                            <option value='82'>0.82</option>
+                            <option value='83'>0.83</option>
+                            <option value='84'>0.84</option>
+                            <option value='85'>0.85</option>
+                            <option value='86'>0.86</option>
+                            <option value='87'>0.87</option>
+                            <option value='88'>0.88</option>
+                            <option value='89'>0.89</option>
+                            <option value='90'>0.90</option>
+                            <option value='91'>0.91</option>
+                            <option value='92'>0.92</option>
+                            <option value='93'>0.93</option>
+                            <option value='94'>0.94</option>
+                            <option value='95'>0.95</option>
+                            <option value='96'>0.96</option>
+                            <option value='97'>0.97</option>
+                            <option value='98'>0.98</option>
+                            <option value='99'>0.99</option>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline">
+                        <button type="submit" class="layui-btn" lay-submit="" id="submit">提交</button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+{#        <div style="width: 100%;height: 80%">#}
+{#            <div id="line1" class="charts_show" style="width: 1000px;padding-left:200px;height:600px;padding-top: 50px;padding-bottom: 0px;display: none">3#}
+{#            333</div>#}
+{#        </div>#}
+    </div>
+    <div style="width: 100%;">
+        <div id="bar" class="charts_show" style="width: 1000px;padding-left:200px;height:600px;padding-top: 50px;padding-bottom: 0px;"></div>
+        <div id="line" class="charts_show" style="width: 1000px;padding-left:200px;height:600px;padding-top: 50px;padding-bottom: 0px;display: none"></div>
+    </div>
+
 
 {% endblock content %}
 
 {% block js %}
 <script type="text/javascript">
-    let barChart = echarts.init(document.getElementById('bar'),'white', {renderer: 'canvas'})
-    $(
-    function () {
-        function fetchData(chart) {
+    layui.use('form', function(){
+        let form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+        //但是，如果你的HTML是动态生成的，自动渲染就会失效
+        //因此你需要在相应的地方，执行下述方法来进行渲染
+        form.render();
+    });
+    $("input[name=chart_type]").click(function(){
+        let x = $(this).val();
+        $('.charts_show').hide()
+        console.log(x)
+        console.log(typeof x)
+        $("#" + x).show()
+    });
+
+    let barChart = echarts.init(document.getElementById('bar'),'write', {renderer: 'canvas'})
+    let lineChart = echarts.init(document.getElementById('line'),'write', {renderer: 'canvas'})
+    {#let lineChart1 = echarts.init(document.getElementById('line1'),'write', {renderer: 'canvas'})#}
+
+    $("#submit").click(function () {
+        let min = $("#min").val()
+        let max = $("#max").val()
+        alert(min+max)
+        $.ajax({
+            url: '/roi/'+min+'/'+max+'/',
+            dataType: 'json',
+            'Content-Type':'application/json',
+            headers:{'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
+            success:function (res) {
+                console.log(res)
+                barChart.clear()
+                barChart.setOption(res.data[0])
+
+            }
+        })
+    })
+
+
+
+        function fetchData(chart_type) {
+            if(chart_type === 'roi'){
+                $("#content1").hide()
+                $("#content2").show()
+                return
+            }else{
+                $("#content2").hide()
+                $("#content1").show()
+            }
             $.ajax({
-                url: '/test/',
+                url: '/charts/'+chart_type,
                 dataType: 'json',
                 'Content-Type':'application/json',
                 headers:{'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
                 success:function (res) {
-                    barChart.setOption(res.data)
+
+                    barChart.clear()
+                    lineChart.clear()
+                    barChart.setOption(res.data[0])
+                    lineChart.setOption(res.data[1])
+
                 }
             })
         }
 
-        fetchData(barChart);
-    }
-    );
+
+
+
+        function fetchCharts(chart_type) {
+            fetchData(chart_type);
+        }
+
+
+
+
 </script>
 {% endblock js%}
