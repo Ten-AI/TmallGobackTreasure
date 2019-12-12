@@ -35,7 +35,9 @@ class TLoginUser(models.Model):
 
 class TMerchant(models.Model):
     merchant_id = models.CharField(primary_key=True, max_length=20)
-    gmv = models.CharField(db_column='GMV', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    gmv = models.CharField(db_column='GMV', max_length=50, blank=True, null=True)
+    password = models.CharField(max_length=20, blank=True, null=True)
+    # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -92,3 +94,13 @@ class TUserPurchase(models.Model):
     class Meta:
         managed = False
         db_table = 't_user_purchase'
+
+
+class TGenderDistribute(models.Model):
+    merchant_id = models.CharField(max_length=20, blank=True, null=False)
+    gender = models.CharField(max_length=20, blank=True, null=True)
+    count = models.CharField(max_length=21, blank=True, null=False,default=0)
+
+    class Meta:
+        managed = False
+        db_table = 't_gender_distribute'

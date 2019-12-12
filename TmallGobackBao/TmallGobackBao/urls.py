@@ -21,7 +21,14 @@ from tmall import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    path('login/', views.login),
+    path('index/', views.index),
+    path('login/merchant/', views.login),
+    path('login/yunying/', views.login_as_yunying),
     path('base/', views.IndexView.as_view(), name='test'),
-    path('test/', views.ChartView.as_view(), name='test'),
+    path('base2/', views.IndexView2.as_view(), name='test'),
+    path('roi/<str:min>/<str:max>/', views.ChartView3.as_view(), name='test'),
+    path('charts/<str:charts_type>/', views.ChartView.as_view(), name='test'),
+    path('charts_yunying/<str:charts_type>/', views.ChartView2.as_view(), name='test'),
+    # path('charts/gmv/', views.ChartGmv.as_view(), name='test'),
+
 ]

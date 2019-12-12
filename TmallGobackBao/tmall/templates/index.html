@@ -205,7 +205,7 @@
 </div>
 
 
-<div style="width: 400px;height: 200px;margin: auto auto;background: #ffffff;text-align: center;margin-top: -100px;border: 1px solid #e7e7e7">
+<div style="width: 400px;height: 250px;margin: auto auto;background: #ffffff;text-align: center;margin-top: -100px;border: 1px solid #e7e7e7">
 
 
     <div style="width: 165px;height: 96px;position: absolute">
@@ -224,6 +224,13 @@
         <span class="p_logo"></span>
         <input id="password" class="ipt" id="password" type="password"  placeholder="请输入密码">
     </p>
+
+    <div style="width:100%;height: 10px;line-height: 10px;margin-top: 10px;border-top: 1px solid #e7e7e7;">
+        <select id="login_type" style="width: 85%">
+            <option value="merchant">商家</option>
+            <option value="yunying">管理</option>
+        </select>
+    </div>
 
     <div style="height: 50px;line-height: 50px;margin-top: 30px;border-top: 1px solid #e7e7e7;">
         <p style="margin: 0px 35px 20px 45px;">
@@ -244,20 +251,26 @@
     $("#submit").click(function () {
         let username = $("#username").val()
         let password = $("#password").val()
+        let loginType = $("#login_type").val()
         {#alert(username+password)#}
+
         $.ajax({
-            url: '/login/',
+            url: '/login/'+loginType+'/',
             type: 'POST',
             data: {
                 'username': username,
-                'password': password
+                'password': password,
+                'loginType': loginType
             },
             'Content-Type':'application/json',
             headers:{'X-CSRFToken': $('input[name=csrfmiddlewaretoken]').val()},
             success:function (res) {
                 {#console.log(res)#}
-                if(res.data.message === 'yes'){
+                if(res.data.message === 'yes1'){
                     window.location.href = '/base/'
+                }
+                else if(res.data.message === 'yes2'){
+                    window.location.href = '/base2'
                 }
             }
         })
